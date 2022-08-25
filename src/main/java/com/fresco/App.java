@@ -1,4 +1,4 @@
-package fractales;
+package com.fresco;
 
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;

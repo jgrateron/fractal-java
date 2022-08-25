@@ -1,4 +1,4 @@
-package fractales;
+package com.fresco;
 
 import java.awt.Color;
 import java.awt.Font;
