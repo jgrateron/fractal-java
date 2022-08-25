@@ -22,6 +22,7 @@ public class PanelFractalSierpinski extends JComponent implements MouseMotionLis
 	private int heightPanel;
 	private boolean start = true;
 	private int nivel_de_recursividad = 1;
+	private int fps = FPS;
 
 	public void start() {
 		widthPanel = getWidth();
@@ -37,12 +38,17 @@ public class PanelFractalSierpinski extends JComponent implements MouseMotionLis
 				long startTime = System.nanoTime();
 				drawBackGround();
 				drawFractal();
+				g2.drawString("fps= " + fps, 50, 50);
 				render();
 				long endTime = System.nanoTime();
 				long time = endTime - startTime;
 				if (time < TARGET_TIME) {
+					fps = FPS;
 					long sleep = (TARGET_TIME - time) / 1_000_000;
 					sleep(sleep);
+				}
+				else {
+					fps = (int) (1_000_000_000 / time);
 				}
 			}
 		});
@@ -87,7 +93,7 @@ public class PanelFractalSierpinski extends JComponent implements MouseMotionLis
 		double yp2 = 700;
 
 		g2.setColor(Color.BLACK);
-		g2.drawString("n= " + nivel_de_recursividad, 240, 100);
+		g2.drawString("n= " + nivel_de_recursividad, 50, 100);
 		paintRecursivo(nivel_de_recursividad, xp1, yp1, xp2, yp2);
 	}
 
